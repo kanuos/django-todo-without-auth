@@ -1,0 +1,25 @@
+{% extends 'todo_core/base.html' %}
+
+{% block main %}
+<main class="container-sm">
+    <h1 class="display-1 my-4 text-center">
+        My To-dos
+    </h1>
+    {% if todos %}
+    <section class="row container-sm d-flex">
+        {% for todo in todos %}
+            {% include 'todo_core/todo_card.html' with pk=todo.pk title=todo.title detail=todo.detail complete=todo.complete %}
+        {% endfor %}
+    </section>
+    {% else %}
+    <section class="row container-sm d-flex">
+        <p class="display-6 text-center">
+            You don't have any tasks left!
+        </p>
+    </section>
+    {% endif %}
+    <div class="text-center mt-4">
+        <a href="/" class="text-light text-capitalize"> go to home</a>
+    </div>
+</main>
+{% endblock main %}

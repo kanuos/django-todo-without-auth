@@ -1,0 +1,25 @@
+{% if complete %}
+    <article class="card text-center bg-info my-4">
+{% else %}
+    <article class="card text-center my-4">
+{% endif %}
+  <div class="card-header {% if complete %} text-dark {% endif %}">
+    To-Do #{{pk}}
+  </div>
+  <div class="card-body">
+    <h2 class="card-title text-dark text-capitalize">{{title}}</h2>
+    <p class="card-text {% if complete %} text-dark {% endif %}">
+        {{ detail | truncatewords:20 }}
+    </p>
+    <div class="my-2">
+        <a href="todos/{{ todo.pk }}" class="btn btn-dark text-info">Read To-Do</a>
+        <a href="todos/{{ todo.pk }}/complete" class="btn {% if complete %} btn-light {% else %} btn-info {% endif %}">
+            {% if complete %}
+                Mark Incomplete
+            {% else %}
+                Mark Complete
+            {% endif %}
+        </a>
+  </div>
+  </div>
+</article>

@@ -1,0 +1,33 @@
+{% extends 'todo_core/base.html' %}
+{% block main %}
+{% load crispy_forms_tags %}
+    <h1 class="text-center py-4 display-3">
+        <a href="" class="link-info" style="text-decoration : none">
+            Django Todo App
+        </a>
+    </h1>
+    <p class="text-center">
+        <a href="todos" class="link-light">
+            My Todos
+        </a>
+    </p>
+    <div class="container-sm row">
+    {% if pk %}
+        <form action="/todos/{{ pk }}/edit" method="post" class="col-12 col-md-6 mx-auto">
+        {% csrf_token %}
+        {{ edit_form | crispy }}
+            <div class="my-4 mx text-center">
+                <button type="submit" class="btn btn-lg btn-info text-white">Add To-do</button>
+            </div>
+        </form>
+    {% else %}
+        <form action="" method="post" class="col-12 col-md-6 mx-auto">
+        {% csrf_token %}
+        {{ form | crispy }}
+            <div class="my-4 mx text-center">
+                <button type="submit" class="btn btn-lg btn-info text-white">Add To-do</button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock main %}
+</div>

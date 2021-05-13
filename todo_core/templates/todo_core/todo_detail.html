@@ -1,0 +1,44 @@
+{% extends 'todo_core/base.html' %}
+{% block main %}
+<main class="container-sm mx-auto text-center mt-4">
+    <div class="d-flex flex-column">
+        <u class="text-white">
+            Task : #{{ todo.pk }}
+        </u>
+        <h1 class="display-2 text-capitalize">
+            {{ todo.title }}
+        </h1>
+    </div>
+    <small class="text-light">
+        Created : {{ todo.date_created }}
+    </small>
+     <div class="d-flex flex-column">
+        <span class="text-white">
+            <u>
+                Task Detail
+            </u>
+        </span>
+         <p class="display-4 my-4 text-capitalize">
+            {{ todo.detail }}
+        </p>
+    </div>
+     <div class="d-flex flex-column">
+        <span class="text-white">
+            <u>
+                Task Priority
+            </u>
+        </span>
+         <p class="display-4 my-4 text-capitalize text-danger">
+            {{ todo.priority }}
+        </p>
+    </div>
+    <a href="/todos/{{ todo.pk }}/delete" class="btn btn-lg btn-danger d-block my-2">
+        Delete Todo
+    </a>
+    <a href="/todos/{{ todo.pk }}/edit" class="btn btn-lg btn-light d-block my-2">
+        Edit Todo
+    </a>
+    <a href="/" class="text-white d-block">Go to Dashboard</a>
+    <a href="/todos" class="text-white d-block">View my to-dos</a>
+</main>
+{% endblock main %}
